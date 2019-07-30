@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+# pageAccueil:    nom de la  route      En commentaire parce que la route est indiquée au-dessus de la fonction
+  # path: /
+  # controller: App\Controller\VuesController::pageAccueil    nom de la fonction
