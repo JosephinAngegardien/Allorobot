@@ -1,0 +1,81 @@
+
+@media(max-width: 575px){
+    #titredumagazine{
+        color: rgb(136, 130, 49);
+    }
+    #bandeautitre{
+        background-color: rgb(116, 23, 61);
+        text-align: center;
+    }
+    .illustration{
+        max-width: 33%;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 576px) { 
+    #titredumagazine{
+        color: blue;
+    }
+    #bandeautitre{
+        background-color: burlywood;
+        text-align: center;
+        letter-spacing: 0.5em;
+    }
+    .illustration{
+        max-width: 33%;
+        overflow: hidden;
+    }
+ }
+
+@media (min-width: 768px) { 
+    #titredumagazine{
+        color: chartreuse;
+    }
+    #bandeautitre{
+        background-color: burlywood;
+        text-align: center;
+        letter-spacing: 1em;
+    }
+    .illustration{
+        max-width: 33%;
+        overflow: hidden;
+    }
+ }
+
+@media (min-width: 992px) { 
+    #titredumagazine{
+        color: crimson;
+    }
+    #bandeautitre{
+        background-color: burlywood;
+        text-align: center;
+        letter-spacing: 1.5em;
+    }
+    .illustration{
+        max-width: 33%;
+        overflow: hidden;
+    }
+ }
+
+@media (min-width: 1200px) { 
+    #titredumagazine{
+        color: saddlebrown;
+    }
+    #bandeautitre{
+        background-color: burlywood;
+        text-align: center;
+        letter-spacing: 2em;
+    }
+    .illustration{
+        max-width: 33%;
+        
+        overflow: hidden;
+    }
+ 
+ }
+
+
+
+
+
