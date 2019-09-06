@@ -5,10 +5,11 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte lié à cette adresse.")
  */
 class User implements UserInterface
 {
@@ -21,6 +22,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email
      */
     private $email;
 
@@ -34,6 +36,14 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=3, max=30, 
+     *      minMessage="Votre pseudonyme doit comporter au moins {{ limit }} lettres.", 
+     *      maxMessage="Votre pseudonyme doit comporter au maximum {{ limit }} lettres.")
+     */
+    private $pseudo;
 
     public function getId(): ?int
     {
@@ -111,5 +121,37 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirm_password
+     */ 
+    public function getConfirm_password()
+    {
+        return $this->confirm_password;
+    }
+
+    /**
+     * Set the value of confirm_password
+     *
+     * @return  self
+     */ 
+    public function setConfirm_password($confirm_password)
+    {
+        $this->confirm_password = $confirm_password;
+
+        return $this;
     }
 }

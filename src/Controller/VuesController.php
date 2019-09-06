@@ -15,5 +15,7 @@ class VuesController extends AbstractController{
     public function pageAccueil(){
         return $this->render("pagedaccueil.html.twig");
     }
+
+
 }
 

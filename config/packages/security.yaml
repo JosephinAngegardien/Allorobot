@@ -6,23 +6,27 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        in_database:
             entity:
                 class: App\Entity\User
                 property: email
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js)/     #Pas de pare-feu actif sur ces adresses, pour permettre le développement.
             security: false
-        main:
+        main:                                       #Le reste est protégé par ce pare-feu.
             anonymous: true
-            guard:
-                authenticators:
-                    - App\Security\LeGardienDeLaPorteAuthenticator
+            provider: in_database
+            form_login:
+                login_path: app_login
+                check_path: app_login
+            #guard:
+            #    authenticators:
+            #        - App\Security\LeGardienDeLaPorteAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -34,4 +38,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }
+
+
+
