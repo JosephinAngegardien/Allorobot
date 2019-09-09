@@ -12,13 +12,13 @@
     <h1 class="">Veuillez vous connecter</h1>
 
     <label for="inputEmail" class="">Courriel</label>
-    <input type="email" name="email" id="inputEmail" class="" placeholder="Courriel" required autofocus>
+    <input type="text" required name="_username"  class="" placeholder="Courriel">
 
     <label for="inputPassword" class="">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="" placeholder="Mot de passe" required>
+    <input type="password" required name="_password"  class="" placeholder="Mot de passe">
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}">
+    {# <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"> #}
     
 
     {#

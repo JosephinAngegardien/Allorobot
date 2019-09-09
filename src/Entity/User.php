@@ -69,7 +69,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return $this->email;
     }
 
     /**
@@ -135,23 +135,5 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * Get the value of confirm_password
-     */ 
-    public function getConfirm_password()
-    {
-        return $this->confirm_password;
-    }
 
-    /**
-     * Set the value of confirm_password
-     *
-     * @return  self
-     */ 
-    public function setConfirm_password($confirm_password)
-    {
-        $this->confirm_password = $confirm_password;
-
-        return $this;
-    }
 }

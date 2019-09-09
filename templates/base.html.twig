@@ -18,14 +18,23 @@
             <h1 id="titredumagazine">Mon agenda</h1>
         </div>
 
+        {% if not app.user %}
         <div>
             <li>
                 <a href=" {{ path ("app_login") }} " >Connexion</a>
             </li>
         </div>
+        {% else %}
         <div>
             <li>
                 <a href=" {{ path ("app_logout") }} " >Déconnexion</a>
+            </li>
+        </div>
+        {% endif %}
+
+        <div>
+            <li>
+                <a href=" {{ path ("app_register") }} " >Créer un compte</a>
             </li>
         </div>
 
