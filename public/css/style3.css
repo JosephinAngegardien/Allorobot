@@ -1,0 +1,78 @@
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    #bodybase{
+        margin: 0;
+        padding: 0;
+    }
+    .boite{
+        height: 2em;
+        width: 9em;
+        border-radius: 0.5em;
+        background-image: linear-gradient(rgb(20, 45, 187), rgb(61, 128, 214));
+        opacity: 0.7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+    }
+    
+    .a1{
+        text-decoration: none;
+        color: burlywood;
+    }
+    
+    .zone1{
+        height: 100vh;
+        width: 100%;
+        background-image: url("/images/montagne.jpg");
+        background-size: cover;
+        background-position: center;
+        display: table;
+        background-attachment: fixed;
+    }
+    .zone2{
+        height: 100vh;
+        width: 100%;
+        background-image: url("/images/plage2.jpg");
+        background-size: cover;
+        background-position: center;
+        display: table;
+        background-attachment: fixed;
+    }
+    #nomdusite{
+        color: rgb(13, 114, 55);
+        font-family: 'AlexBrushRegular';
+        font-size: 3em;
+    }
+    #letitre{
+        height: 5em;
+        width: 22em;
+        background-image: none;
+        top: 5vh;
+        left: 45%;
+    }
+    #connexion, #deconnexion{
+        left: 4vw;
+        top: 8vh;
+    }
+    #creercompte{
+        left: 4vw;
+        top: 3vh;
+    }
+    #sentence{
+        font-family: 'AlexBrushRegular';
+        font-size: 3em;
+        color: rgb(12, 85, 42);
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+ 
+ }
+
+
+
+
+
+

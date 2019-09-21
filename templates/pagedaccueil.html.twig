@@ -4,9 +4,14 @@
 
 
 
-{% block body %}
+{% block content %}
 
-
+    {% if app.user %}
+        <div class="">Vous êtes connecté en tant que {{ app.user.pseudo }}</div>  
+    {% endif %}
+    {% if is_granted ("ROLE_ADMIN") %}
+        <p><strong>Bienvenue, maître</strong></p>
+    {% endif %}
 
 {% endblock %}
 
