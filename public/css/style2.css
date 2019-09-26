@@ -42,7 +42,8 @@
     }
     #nomdusite{
         color: rgb(13, 114, 55);
-        font-family: 'AlexBrushRegular';
+        /* font-family: 'AlexBrushRegular'; */
+        font-family: 'Alex Brush', cursive;
         font-size: 3.5em;
     }
     #letitre{
@@ -61,7 +62,8 @@
         top: 3vh;
     }
     #sentence{
-        font-family: 'AlexBrushRegular';
+        /* font-family: 'AlexBrushRegular'; */
+        font-family: 'Alex Brush', cursive;
         font-size: 3em;
         color: rgb(12, 85, 42);
         text-align: center;

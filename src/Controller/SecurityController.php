@@ -20,6 +20,14 @@ class SecurityController extends AbstractController
      */
     public function logout(){}
 
+    /**
+     * @route("/admin", name="app_admin")
+     */
+    public function admin()
+    {
+        return $this->render("vues/admin.html.twig");
+    }
+
 }
 
 

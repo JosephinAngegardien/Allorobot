@@ -14,15 +14,15 @@
         <link rel="stylesheet" href="{{ asset("css/style4.css") }}">
         <link rel="stylesheet" href="{{ asset("css/style5.css") }}">
         {# <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/alex-brush" type="text/css"/> #}
-        <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
 
         {% endblock %}
     </head>
     <body id="bodybase">
 
-        <section class="zone1">
+        <section class="zone3">
             
-                <header><h1 id="nomdusite">Mon agenda</h1></header>
+                <header><h1 id="nomdusite2">Mon agenda</h1></header>
 
                 <nav>
                     <div class="boite" id="creercompte">
@@ -31,7 +31,7 @@
 
                     {% if is_granted ("ROLE_ADMIN") %}
                         <div class="boite" id="administrateur">
-                            <a class="a2" href="{{ path ("app_admin") }}"><strong>L'antre de l'être</strong></a>
+                            <a class="a2" href="{{ path ("pageAccueil") }}"><strong>A bientôt</strong></a> 
                         </div>
                     {% endif %}
 
@@ -48,21 +48,13 @@
 
                 {% block body %}{% endblock %}
                 {% block content %}{% endblock %}
+
+                <footer id="footer2">Requêtes sur les utilisateurs</footer>
             
         </section>
 
-        <section class="zone2">
-            <h1 id="sentence">Pourquoi remettre au lendemain ce qu'on peut faire le surlendemain ?</h1>
-            {# <footer>
-                {% if app.user %}
-                    {% for role in app.user.roles %}
-                    <li> {{ role }} </li>
-                    {% endfor %}
-                    {% if is_granted ("ROLE_ADMIN") %}
-                        <p>Bonjour monsieur l'administrateur</p>
-                    {% endif %}
-                {% endif %}
-            </footer> #}
+        <section class="zone4">
+            <h1 id="sentence2">L'antre du maître</h1>
         </section>
         
         {% block javascripts %}
@@ -72,6 +64,10 @@
 
     </body>
 </html>
+
+
+
+
 
 
 

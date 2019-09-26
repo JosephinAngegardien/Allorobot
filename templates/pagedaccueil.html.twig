@@ -6,12 +6,11 @@
 
 {% block content %}
 
-    {% if app.user %}
-        <div class="">Vous êtes connecté en tant que {{ app.user.pseudo }}</div>  
-    {% endif %}
-    {% if is_granted ("ROLE_ADMIN") %}
-        <p><strong>Bienvenue, maître</strong></p>
-    {% endif %}
+    <footer id="footer1">
+        {% if app.user %}
+            <p>Vous êtes connecté en tant que {{ app.user.pseudo }}</p>
+        {% endif %}
+    </footer>
 
 {% endblock %}
 
