@@ -21,7 +21,7 @@
         height: 7em;
     }
     #nomdusite{
-        color: rgb(13, 114, 55);
+        color: rgb(117, 71, 11);
         /* font-family: 'AlexBrushRegular'; */
         font-family: 'Alex Brush', cursive;
         font-size: 4em;
@@ -31,16 +31,17 @@
         justify-content: space-evenly;
     }
     .boite{
-        height: 2em;
-        width: 9em;
+        /* height: 2em; */
+        /* width: 9em; */
         border-radius: 0.5em;
+        padding: 1em;
         background-image: linear-gradient(rgb(20, 45, 187), rgb(61, 128, 214));
         opacity: 0.7;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
-    #creercompte{
+    /* #creercompte{
         left: 4vw;
         top: 3vh;
     }
@@ -50,7 +51,7 @@
     #connexion, #deconnexion{
         left: 4vw;
         top: 8vh;
-    }
+    } */
     .a1{
         text-decoration: none;
         color: burlywood;

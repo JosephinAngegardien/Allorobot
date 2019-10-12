@@ -1,23 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}ModifUserPro{% endblock %}
 
 {% block body %}
 
     <section class="formulaire">
-        <div class="titreform"><h1>Inscription</h1></div>
+        <div class="titreform"><h1>Modification des informations</h1></div>
 
         <div class="saisieform">
         {{ form_start(registrationForm) }}
 
-            {{ form_row(registrationForm.email, {"label": "Courriel "}) }}
-            {{ form_row(registrationForm.prenom, {"label": "Prénom "}) }}
+            {{ form_row(registrationForm.siret, {"label": "Courriel "}) }}
+            {{ form_row(registrationForm.email, {"label": "Prénom "}) }}
             {{ form_row(registrationForm.nom, {"label": "Nom "}) }}
             {{ form_row(registrationForm.adresse, {"label": "Adresse "}) }}
             {{ form_row(registrationForm.ville, {"label": "Ville "}) }}
             {{ form_row(registrationForm.codepostal, {"label": "Code postal "}) }}
-            {{ form_row(registrationForm.password.first, {"label": "Mot de passe (au moins huit caractères) "}) }}
-            {{ form_row(registrationForm.password.second, {"label": "Confirmation du mot de passe "}) }}
 
             <button class="valider">Enregistrement</button>
 

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  {# Utilité ? #}
 
-        <title>{% block title %}Agenda{% endblock %}</title>
+        <title>{% block title %}Robots{% endblock %}</title>
 
         {% block stylesheets %}
 
@@ -22,22 +22,41 @@
 
         <section class="zone1">
             
-                <header><h1 id="nomdusite">Mon agenda</h1></header>
+                <header><h1 id="nomdusite">Robots à louer</h1></header>
 
                 <nav>
+                    {% if not app.user %}
                     <div class="boite" id="creercompte">
-                        <a class="a1" href=" {{ path ("app_register") }} " >Créer un compte</a>
+                        <a class="a1" href=" {{ path ("app_register") }} " >Créer un compte pour particulier</a>
                     </div>
+                    <div class="boite">
+                        <a class="a1" href=" {{ path ("app_registerpro") }} " >Créer un compte pour entreprise</a>
+                    </div>
+                    {% else %}
+                        {% if is_granted ("ROLE_USER") %}
+                        <div class="boite">
+                            <a class="a1" href=" {{ path ("modifUser") }} " >Modifier profil</a>
+                        </div>
+                        {% endif %}
+                        {% if is_granted ("ROLE_USERPRO") %}
+                        <div class="boite">
+                            <a class="a1" href=" {{ path ("modifUserpro") }} " >Modifier profil</a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
 
-                    {% if is_granted ("ROLE_ADMIN") %}
+                    {# {% if is_granted ("ROLE_ADMIN") %}
                         <div class="boite" id="administrateur">
                             <a class="a2" href="{{ path ("app_admin") }}"><strong>L'antre de l'être</strong></a>
                         </div>
-                    {% endif %}
+                    {% endif %} #}
 
                     {% if not app.user %}
                     <div class="boite" id="connexion">
-                        <a class="a1" href=" {{ path ("app_login") }} " >Connexion</a>
+                        <a class="a1" href=" {{ path ("app_login") }} " >Connexion particulier</a>
+                    </div>
+                    <div class="boite">
+                        <a class="a1" href=" {{ path ("app_loginpro") }} " >Connexion entreprise</a>
                     </div>
                     {% else %}
                     <div class="boite" id="deconnexion">

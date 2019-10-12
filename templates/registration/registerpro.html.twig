@@ -10,9 +10,9 @@
         <div class="saisieform">
         {{ form_start(registrationForm) }}
 
+            {{ form_row(registrationForm.siret, {"label": "N° siret "}) }}
             {{ form_row(registrationForm.email, {"label": "Courriel "}) }}
-            {{ form_row(registrationForm.prenom, {"label": "Prénom "}) }}
-            {{ form_row(registrationForm.nom, {"label": "Nom "}) }}
+            {{ form_row(registrationForm.nom, {"label": "Nom ou raison sociale "}) }}
             {{ form_row(registrationForm.adresse, {"label": "Adresse "}) }}
             {{ form_row(registrationForm.ville, {"label": "Ville "}) }}
             {{ form_row(registrationForm.codepostal, {"label": "Code postal "}) }}
@@ -26,6 +26,5 @@
     </section>
 
 {% endblock %}
-
 
 

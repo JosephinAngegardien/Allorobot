@@ -8,14 +8,19 @@
 
     <footer id="footer1">
         {% if app.user %}
-            <p>Vous êtes connecté en tant que {{ app.user.pseudo }}</p>
+            {% if is_granted ("ROLE_USER") %}
+                <p>Vous êtes connecté en tant que {{ app.user.prenom }} {{ app.user.nom }} </p>
+            {% endif %}
+            {% if is_granted ("ROLE_USERPRO") %}
+                <p>Raison sociale : {{ app.user.nom }} </p>
+            {% endif %}
         {% endif %}
     </footer>
 
 {% endblock %}
 
-{% block javascript %}
-
+{% block javascripts %}
+    {# <script src="/js/essai.js"></script> #}
 {% endblock %}
 
 

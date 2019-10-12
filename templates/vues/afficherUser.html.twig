@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Courriel</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Code postal</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+				<td scope="col">{{ user.prenom }}</td>
+				<td scope="col">{{ user.nom }}</td>
+				<td scope="col">{{ user.email }}</td>
+				<td scope="col">{{ user.adresse }}</td>
+				<td scope="col">{{ user.ville }}</td>
+				<td scope="col">{{ user.codepostal }}</td>
+                {# <td><a href="{{ path('editFormateur',{'id':user.id}) }}"><i></i></a></td>
+                <td><a href="{{ path('deleteFormateur',{'id':user.id}) }}"><i></i></a></td> #}
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+

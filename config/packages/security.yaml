@@ -2,29 +2,44 @@ security:
     encoders:
         App\Entity\User:
             algorithm: auto
+        App\Entity\UserPro:
+            algorithm: auto
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        in_database:
+        user_provider:
             entity:
                 class: App\Entity\User
                 property: email
+        userpro_provider:
+            entity:
+                class: App\Entity\UserPro
+                property: siret
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/     #Pas de pare-feu actif sur ces adresses, pour permettre le développement.
             security: false
-        main:                                       #Le reste est protégé par ce pare-feu.
+        user_security:                                      #Le reste est protégé par ce pare-feu...
+            pattern: ^/login/
             anonymous: true
-            provider: in_database
+            provider: user_provider
             form_login:
                 login_path: app_login
                 check_path: app_login
-            #guard:
-            #    authenticators:
-            #        - App\Security\LeGardienDeLaPorteAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: /
+        userpro_security:                                   #... et celui-ci.
+            pattern: ^/loginpro/
+            anonymous: true
+            provider: userpro_provider
+            form_login:
+                login_path: app_loginpro
+                check_path: app_loginpro
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -43,7 +58,7 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_USERPRO]
 
 
 
