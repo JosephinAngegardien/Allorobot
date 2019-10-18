@@ -1,47 +1,48 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Entity\Particulier:
             algorithm: auto
-        App\Entity\UserPro:
+        App\Entity\Professionnel:
             algorithm: auto
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        user_provider:
+        particulier_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Particulier
                 property: email
-        userpro_provider:
+        professionnel_provider:
             entity:
-                class: App\Entity\UserPro
+                class: App\Entity\Professionnel
                 property: siret
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/     #Pas de pare-feu actif sur ces adresses, pour permettre le développement.
             security: false
-        user_security:                                      #Le reste est protégé par ce pare-feu...
-            pattern: ^/login/
+
+        particulier_security:
+            pattern: ^/particulier
             anonymous: true
-            provider: user_provider
-            form_login:
-                login_path: app_login
-                check_path: app_login
+            provider: particulier_provider
+            guard:
+                authenticators:
+                    - App\Security\ParticulierAuthenticator
             logout:
-                path: app_logout
+                path: part_logout
                 # where to redirect after logout
                 target: /
-        userpro_security:                                   #... et celui-ci.
-            pattern: ^/loginpro/
+        professionnel_security:
+            pattern: ^/professionnel
             anonymous: true
-            provider: userpro_provider
-            form_login:
-                login_path: app_loginpro
-                check_path: app_loginpro
+            provider: professionnel_provider
+            guard:
+                authenticators:
+                    - App\Security\ProfessionnelAuthenticator
             logout:
-                path: app_logout
+                path: pro_logout
                 # where to redirect after logout
                 target: /
 
@@ -54,11 +55,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_USER, ROLE_USERPRO]
+        ROLE_ADMIN: [ROLE_USER, ROLE_PARTICULIER, ROLE_PROFESSIONNEL]
 
 
 

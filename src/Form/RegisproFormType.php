@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\UserPro;
+use App\Entity\Professionnel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -49,7 +49,7 @@ class RegisproFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => UserPro::class,
+            'data_class' => Professionnel::class,
         ]);
     }
 }

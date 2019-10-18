@@ -3,15 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserProRepository")
- * @UniqueEntity(fields={"siret"}, message="Il existe déjà un compte lié à ce n° siret.")
+ * @ORM\Entity(repositoryClass="App\Repository\ParticulierRepository")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte lié à cette adresse.")
  */
-class UserPro implements UserInterface
+class Particulier implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -22,8 +22,9 @@ class UserPro implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email
      */
-    private $siret;
+    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -39,13 +40,12 @@ class UserPro implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email
      */
-    private $email;
+    private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,14 +67,14 @@ class UserPro implements UserInterface
         return $this->id;
     }
 
-    public function getSiret(): ?string
+    public function getEmail(): ?string
     {
-        return $this->siret;
+        return $this->email;
     }
 
-    public function setSiret(string $siret): self
+    public function setEmail(string $email): self
     {
-        $this->siret = $siret;
+        $this->email = $email;
 
         return $this;
     }
@@ -86,7 +86,7 @@ class UserPro implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->siret;
+        return $this->email;
     }
 
     /**
@@ -95,8 +95,8 @@ class UserPro implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every userpro at least has ROLE_USERPRO
-        $roles[] = 'ROLE_USERPRO';
+
+        $roles[] = 'ROLE_PARTICULIER';
 
         return array_unique($roles);
     }
@@ -140,6 +140,30 @@ class UserPro implements UserInterface
         // $this->plainPassword = null;
     }
 
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
     public function getNom(): ?string
     {
         return $this->nom;
@@ -148,18 +172,6 @@ class UserPro implements UserInterface
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
 
         return $this;
     }
@@ -199,4 +211,6 @@ class UserPro implements UserInterface
 
         return $this;
     }
+
+
 }

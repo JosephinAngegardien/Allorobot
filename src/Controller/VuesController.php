@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 
-use App\Entity\User;
+use App\Entity\Particulier;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 
 class VuesController extends AbstractController{
 
@@ -20,12 +19,12 @@ class VuesController extends AbstractController{
     }
 
     /**
-     * @Route("/vues/afficherUser/{id}", name="afficherUser")
+     * @Route("/vues/afficherParticulier/{id}", name="afficherParticulier")
      */
-    public function afficherUser(User $user, ObjectManager $manager, Request $request) {
+    public function afficherParticulier(Particulier $particulier, ObjectManager $manager, Request $request) {
 
-        return $this->render('vues/afficherUser.html.twig', [
-            'utilisateur' => $user
+        return $this->render('vues/afficherParticulier.html.twig', [
+            'utilisateur' => $particulier
         ]);
     }
 

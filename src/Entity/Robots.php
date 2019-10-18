@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
+use App\Entity\Avis;
+use App\Entity\Particulier;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RobotsRepository")
+ * @UniqueEntity(fields={"modele"}, message="Ce nom de modèle existe déjà.")
  */
 class Robots
 {
@@ -37,9 +43,35 @@ class Robots
     private $image;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="robots", orphanRemoval=true)
      */
     private $avis;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\CaracTech", inversedBy="robots")
+     */
+    private $caracs;
+
+    public function __construct()
+    {
+        // $this->images = new ArrayCollection();
+        $this->lesavis = new ArrayCollection();
+        $this->caracs = new ArrayCollection();
+    }
+
+    /**
+     * Permet de récupérer le commentaire d'un particulier au sujet d'un robot.
+     *
+     * @param Particulier $author
+     * @return Avis|null
+     */
+    public function getAvisFromAuthor(Particulier $author){
+        foreach($this->lesavis as $avis) {
+            if($avis->getAuthor() === $author) return $avis;
+        }
+
+        return null;
+    }
 
     public function getId(): ?int
     {
@@ -94,15 +126,61 @@ class Robots
         return $this;
     }
 
-    public function getAvis(): ?string
+    /**
+     * @return Collection|Avis[]
+     */
+    public function getAvis(): Collection
     {
-        return $this->avis;
+        return $this->lesavis;
     }
 
-    public function setAvis(?string $avis): self
+    public function addAvis(Avis $avis): self
     {
-        $this->avis = $avis;
+        if (!$this->lesavis->contains($avis)) {
+            $this->lesavis[] = $avis;
+            $avis->setRobot($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvis(Avis $avis): self
+    {
+        if ($this->lesavis->contains($avis)) {
+            $this->lesavis->removeElement($avis);
+            // set the owning side to null (unless already changed)
+            if ($avis->getRobot() === $this) {
+                $avis->setRobot(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CaracTech[]
+     */
+    public function getCaracs(): Collection
+    {
+        return $this->caracs;
+    }
+
+    public function addCarac(CaracTech $carac): self
+    {
+        if (!$this->caracs->contains($carac)) {
+            $this->caracs[] = $carac;
+        }
+
+        return $this;
+    }
+
+    public function removeCarac(CaracTech $carac): self
+    {
+        if ($this->caracs->contains($carac)) {
+            $this->caracs->removeElement($carac);
+        }
 
         return $this;
     }
 }
+

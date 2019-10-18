@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\UserPro;
 use App\Form\AccountType;
+use App\Entity\Particulier;
+use App\Entity\Professionnel;
+use App\Form\ModifproFormType;
 use App\Form\RegisproFormType;
-use App\Form\ModifUserFormType;
-use App\Form\RegistrationFormType;
+use App\Form\ModifpartFormType;
+use App\Form\RegispartFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,8 +24,8 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);      //On relie les champs du formulaire aux champs de l'utilisateur.
+        $user = new Particulier();
+        $form = $this->createForm(RegispartFormType::class, $user);      //On relie les champs du formulaire aux champs de l'utilisateur.
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -35,7 +36,7 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-            $user->setRoles(["ROLE_USER"]);
+            $user->setRoles(["ROLE_PARTICULIER"]);
             // $user->setRoles(["ROLE_ADMIN"]);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -58,7 +59,7 @@ class RegistrationController extends AbstractController
      */
     public function registerpro(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new UserPro();
+        $user = new Professionnel();
         $form = $this->createForm(RegisproFormType::class, $user);      //On relie les champs du formulaire aux champs de l'utilisateur.
         $form->handleRequest($request);
 
@@ -70,7 +71,7 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-            $user->setRoles(["ROLE_USERPRO"]);
+            $user->setRoles(["ROLE_PROFESSIONNEL"]);
             // $user->setRoles(["ROLE_ADMIN"]);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -89,12 +90,12 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/registration/register", name="modifUser")
+     * @Route("/registration/register", name="modifParticulier")        //Route juste ?
      */
-    public function modifierUser(Request $request, ObjectManager $manager){
+    public function modifierParticulier(Request $request, ObjectManager $manager){
         
         $user=$this->getUser();
-        $form=$this->createForm(ModifUserFormType::class, $user);
+        $form=$this->createForm(ModifpartFormType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -104,16 +105,16 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('pageAccueil', ['id' => $user->getID()]);
         }
 
-        return $this->render('registration/modifuser.html.twig', ['registrationForm' => $form->createView()]);
+        return $this->render('registration/modifParticulier.html.twig', ['registrationForm' => $form->createView()]);
     }
 
     /**
-     * @Route("/registration/registerpro", name="modifUserpro")
+     * @Route("/registration/registerpro", name="modifProfessionnel")       //Route juste ?
      */
     public function modifierUserPro(Request $request, ObjectManager $manager){
         
         $user=$this->getUserPro();
-        $form=$this->createForm(ModifUserProFormType::class, $user);
+        $form=$this->createForm(ModifproFormType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -123,7 +124,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('pageAccueil', ['id' => $user->getID()]);
         }
 
-        return $this->render('registration/modifuserpro.html.twig', ['registrationForm' => $form->createView()]);
+        return $this->render('registration/modifProfessionnel.html.twig', ['registrationForm' => $form->createView()]);
     }
 
 }

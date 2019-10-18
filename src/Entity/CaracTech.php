@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class CaracTech
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Robots", mappedBy="caracs")
+     */
+    private $robots;
+
+    public function __construct()
+    {
+        $this->robots = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +46,34 @@ class CaracTech
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Robots[]
+     */
+    public function getRobots(): Collection
+    {
+        return $this->robots;
+    }
+
+    public function addRobot(Robots $robot): self
+    {
+        if (!$this->robots->contains($robot)) {
+            $this->robots[] = $robot;
+            $robot->addCarac($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRobot(Robots $robot): self
+    {
+        if ($this->robots->contains($robot)) {
+            $this->robots->removeElement($robot);
+            $robot->removeCarac($this);
+        }
 
         return $this;
     }

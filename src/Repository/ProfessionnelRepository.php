@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\UserPro;
+use App\Entity\Professionnel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -12,11 +12,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method UserPro[]    findAll()
  * @method UserPro[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserProRepository extends ServiceEntityRepository
+class ProfessionnelRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, UserPro::class);
+        parent::__construct($registry, Professionnel::class);
     }
 
     // /**

@@ -22,7 +22,7 @@
 
         <section class="zone1">
             
-                <header><h1 id="nomdusite">Robots à louer</h1></header>
+                <header><h1 id="nomdusite">Location de robots</h1></header>
 
                 <nav>
                     {% if not app.user %}
@@ -33,14 +33,14 @@
                         <a class="a1" href=" {{ path ("app_registerpro") }} " >Créer un compte pour entreprise</a>
                     </div>
                     {% else %}
-                        {% if is_granted ("ROLE_USER") %}
+                        {% if is_granted ("ROLE_PARTICULIER") %}
                         <div class="boite">
-                            <a class="a1" href=" {{ path ("modifUser") }} " >Modifier profil</a>
+                            <a class="a1" href=" {{ path ("modifParticulier") }} " >Modifier profil</a>
                         </div>
                         {% endif %}
-                        {% if is_granted ("ROLE_USERPRO") %}
+                        {% if is_granted ("ROLE_PROFESSIONNEL") %}
                         <div class="boite">
-                            <a class="a1" href=" {{ path ("modifUserpro") }} " >Modifier profil</a>
+                            <a class="a1" href=" {{ path ("modifProfessionnel") }} " >Modifier profil</a>
                         </div>
                         {% endif %}
                     {% endif %}
@@ -59,9 +59,21 @@
                         <a class="a1" href=" {{ path ("app_loginpro") }} " >Connexion entreprise</a>
                     </div>
                     {% else %}
-                    <div class="boite" id="deconnexion">
-                        <a class="a1" href=" {{ path ("app_logout") }} " >Déconnexion</a>
-                    </div>
+                        {% if is_granted ("ROLE_PARTICULIER") %}
+                        <div class="boite" id="deconnexion">
+                            <a class="a1" href=" {{ path ("part_logout") }} " >Déconnexion part</a>
+                        </div>
+                        {% endif %}
+                        {% if is_granted ("ROLE_PROFESSIONNEL") %}
+                        <div class="boite" id="deconnexion">
+                            <a class="a1" href=" {{ path ("pro_logout") }} " >Déconnexion pro</a>
+                        </div>
+                        {% endif %}
+                        {% if is_granted ("ROLE_ADMIN") %}
+                        <div class="boite" id="deconnexion">
+                            <a class="a1" href=" {{ path ("admin_logout") }} " >Déconnexion admin</a>
+                        </div>
+                        {% endif %}
                     {% endif %}
                 </nav>
 

@@ -11,19 +11,28 @@
         <div class="">Vous êtes connecté en tant que {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">Déconnexion</a></div>
     {% endif %} #}
 
+    {% if error %}
+        <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {# <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required> #}
+
     <div class="saisieform">
         <div class="idconnex">
-            <label for="inputEmail" class="">Courriel</label>
-            <input type="email" name="_username"  class="" placeholder="Courriel">
+            <label for="inputSiret" class="">N° siret </label>
+            <input type="text" value="{{ last_username }}" name="siret" class="" placeholder="N° siret" required autofocus>
         </div>
         <div class="idconnex">
-            <label for="inputPassword" class="">Mot de passe</label>
-            <input type="password" name="_password"  class="" placeholder="Mot de passe">
+            <label for="inputPassword" class="">Mot de passe </label>
+            <input type="password" name="password"  class="" placeholder="Mot de passe" required>
         </div>
     
 
-    {# <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"> #}
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
     
 
     {#
@@ -46,3 +55,5 @@
 </section>
 
 {% endblock %}
+
+
