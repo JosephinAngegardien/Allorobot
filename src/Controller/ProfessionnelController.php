@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class ProfessionnelController extends AbstractController
 {
     /**
-     * @Route("/professionnel/loginpro", name="app_loginpro")
+     * @Route("/professionnel/loginpro", name="connexion_pro")
      */
     public function loginpro(AuthenticationUtils $authenticationUtils): Response
     {
@@ -20,7 +20,7 @@ class ProfessionnelController extends AbstractController
     }
 
     /**
-     * @Route("/professionnel/logout", name="pro_logout")
+     * @Route("/professionnel/logout", name="deco_pro")
      * 
      * @return void
      */

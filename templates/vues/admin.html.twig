@@ -26,22 +26,22 @@
 
                 <nav>
                     <div class="boite" id="creercompte">
-                        <a class="a1" href=" {{ path ("app_register") }} " >Créer un compte</a>
+                        <a class="a1" href=" {{ path ("inscription_part") }} " >Créer un compte</a>
                     </div>
 
                     {% if is_granted ("ROLE_ADMIN") %}
                         <div class="boite" id="administrateur">
-                            <a class="a2" href="{{ path ("pageAccueil") }}"><strong>A bientôt</strong></a> 
+                            <a class="a2" href="{{ path ("page_accueil") }}"><strong>A bientôt</strong></a> 
                         </div>
                     {% endif %}
 
                     {% if not app.user %}
                     <div class="boite" id="connexion">
-                        <a class="a1" href=" {{ path ("app_login") }} " >Connexion</a>
+                        <a class="a1" href=" {{ path ("connexion_part") }} " >Connexion</a>
                     </div>
                     {% else %}
                     <div class="boite" id="deconnexion">
-                        <a class="a1" href=" {{ path ("app_logout") }} " >Déconnexion</a>
+                        <a class="a1" href=" {{ path ("deco_part") }} " >Déconnexion</a>
                     </div>
                     {% endif %}
                 </nav>

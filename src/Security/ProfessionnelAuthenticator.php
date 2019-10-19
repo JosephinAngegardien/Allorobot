@@ -39,7 +39,7 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
-        return 'app_loginpro' === $request->attributes->get('_route')
+        return 'connexion_pro' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -69,7 +69,7 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Siret could not be found.');
+            throw new CustomUserMessageAuthenticationException("Le numéro siret n'a pas été trouvé.");
         }
 
         return $user;
@@ -88,11 +88,11 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
 
         // For example : return new RedirectResponse($this->router->generate('some_route'));
         //throw new \Exception('TODO ...'.__FILE__);
-        return new RedirectResponse($this->router->generate('app_loginpro'));
+        return new RedirectResponse($this->router->generate('accueil_pro'));
     }
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('app_loginpro');
+        return $this->router->generate('accueil_pro');
     }
 }

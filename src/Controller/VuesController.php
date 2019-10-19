@@ -12,18 +12,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class VuesController extends AbstractController{
 
     /**
-     * @Route("/", name="pageAccueil")
+     * @Route("/", name="page_accueil")
      */
     public function pageAccueil(){
         return $this->render("pagedaccueil.html.twig");
     }
 
     /**
-     * @Route("/vues/afficherParticulier/{id}", name="afficherParticulier")
+     * @Route("/vues/afficherParticulier/{id}", name="afficher_part")
      */
     public function afficherParticulier(Particulier $particulier, ObjectManager $manager, Request $request) {
 
-        return $this->render('vues/afficherParticulier.html.twig', [
+        return $this->render('vues/afficherpart.html.twig', [
             'utilisateur' => $particulier
         ]);
     }

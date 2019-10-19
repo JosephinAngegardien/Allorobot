@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="{{ asset("css/style3.css") }}">
         <link rel="stylesheet" href="{{ asset("css/style4.css") }}">
         <link rel="stylesheet" href="{{ asset("css/style5.css") }}">
-        {# <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/alex-brush" type="text/css"/> #}
         <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Acme|Cinzel|Graduate|Press+Start+2P|Rye|Turret+Road&display=swap" rel="stylesheet">
 
         {% endblock %}
     </head>
@@ -24,26 +24,31 @@
             
                 <header><h1 id="nomdusite">Location de robots</h1></header>
 
+                {% block navigation %}
+
                 <nav>
                     {% if not app.user %}
                     <div class="boite" id="creercompte">
-                        <a class="a1" href=" {{ path ("app_register") }} " >Créer un compte pour particulier</a>
+                        <a class="a1" href=" {{ path ("inscription_part") }} " >Créer un compte pour particulier</a>
                     </div>
                     <div class="boite">
-                        <a class="a1" href=" {{ path ("app_registerpro") }} " >Créer un compte pour entreprise</a>
+                        <a class="a1" href=" {{ path ("inscription_pro") }} " >Créer un compte pour entreprise</a>
                     </div>
                     {% else %}
                         {% if is_granted ("ROLE_PARTICULIER") %}
                         <div class="boite">
-                            <a class="a1" href=" {{ path ("modifParticulier") }} " >Modifier profil</a>
+                            <a class="a1" href=" {{ path ("modif_part") }} " >Modifier profil</a>
                         </div>
                         {% endif %}
                         {% if is_granted ("ROLE_PROFESSIONNEL") %}
                         <div class="boite">
-                            <a class="a1" href=" {{ path ("modifProfessionnel") }} " >Modifier profil</a>
+                            <a class="a1" href=" {{ path ("modif_pro") }} " >Modifier profil</a>
                         </div>
                         {% endif %}
                     {% endif %}
+                    <div class="boite">
+                        <a class="a1" href=" {{ path ("page_accueil") }} " >Retour à l'accueil</a>
+                    </div>
 
                     {# {% if is_granted ("ROLE_ADMIN") %}
                         <div class="boite" id="administrateur">
@@ -53,29 +58,31 @@
 
                     {% if not app.user %}
                     <div class="boite" id="connexion">
-                        <a class="a1" href=" {{ path ("app_login") }} " >Connexion particulier</a>
+                        <a class="a1" href=" {{ path ("connexion_part") }} " >Connexion particulier</a>
                     </div>
                     <div class="boite">
-                        <a class="a1" href=" {{ path ("app_loginpro") }} " >Connexion entreprise</a>
+                        <a class="a1" href=" {{ path ("connexion_pro") }} " >Connexion entreprise</a>
                     </div>
                     {% else %}
                         {% if is_granted ("ROLE_PARTICULIER") %}
                         <div class="boite" id="deconnexion">
-                            <a class="a1" href=" {{ path ("part_logout") }} " >Déconnexion part</a>
+                            <a class="a1" href=" {{ path ("deco_part") }} " >Déconnexion part</a>
                         </div>
                         {% endif %}
                         {% if is_granted ("ROLE_PROFESSIONNEL") %}
                         <div class="boite" id="deconnexion">
-                            <a class="a1" href=" {{ path ("pro_logout") }} " >Déconnexion pro</a>
+                            <a class="a1" href=" {{ path ("deco_pro") }} " >Déconnexion pro</a>
                         </div>
                         {% endif %}
                         {% if is_granted ("ROLE_ADMIN") %}
                         <div class="boite" id="deconnexion">
-                            <a class="a1" href=" {{ path ("admin_logout") }} " >Déconnexion admin</a>
+                            <a class="a1" href=" {{ path ("deco_admin") }} " >Déconnexion admin</a>
                         </div>
                         {% endif %}
                     {% endif %}
                 </nav>
+
+                {% endblock %}
 
                 {% block body %}{% endblock %}
                 {% block content %}{% endblock %}

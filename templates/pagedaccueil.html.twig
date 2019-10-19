@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
 
-
-
+{% block navigation %}
+    <nav>
+        <div class="boite">
+            <a class="a1" href=" {{ path ("accueil_part") }} " >Pour les particuliers</a>
+        </div>
+        <div class="boite">
+            <a class="a1" href=" {{ path ("accueil_pro") }} " >Pour les entreprises</a>
+        </div>
+    </nav>
+{% endblock %}
 
 {% block content %}
 

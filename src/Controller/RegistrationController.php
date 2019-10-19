@@ -20,7 +20,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/registerpart", name="inscription_part")
      */
     public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -45,17 +45,17 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute("app_login");
+            return $this->redirectToRoute("connexion_part");
 
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('particulier/registerpart.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/registerpro", name="app_registerpro")
+     * @Route("/registerpro", name="inscription_pro")
      */
     public function registerpro(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -80,17 +80,17 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute("app_loginpro");
+            return $this->redirectToRoute("connexion_pro");
 
         }
 
-        return $this->render('registration/registerpro.html.twig', [
+        return $this->render('professionnel/registerpro.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/registration/register", name="modifParticulier")        //Route juste ?
+     * @Route("/particulier/modifpart", name="modif_part")
      */
     public function modifierParticulier(Request $request, ObjectManager $manager){
         
@@ -102,18 +102,18 @@ class RegistrationController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute('pageAccueil', ['id' => $user->getID()]);
+            return $this->redirectToRoute('accueil_part', ['id' => $user->getID()]);
         }
 
-        return $this->render('registration/modifParticulier.html.twig', ['registrationForm' => $form->createView()]);
+        return $this->render('particulier/modifpart.html.twig', ['registrationForm' => $form->createView()]);
     }
 
     /**
-     * @Route("/registration/registerpro", name="modifProfessionnel")       //Route juste ?
+     * @Route("/professionnel/modifpro", name="modif_pro")
      */
-    public function modifierUserPro(Request $request, ObjectManager $manager){
+    public function modifierProfessionnel(Request $request, ObjectManager $manager){
         
-        $user=$this->getUserPro();
+        $user=$this->getUser();
         $form=$this->createForm(ModifproFormType::class, $user);
         $form->handleRequest($request);
 
@@ -121,10 +121,10 @@ class RegistrationController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute('pageAccueil', ['id' => $user->getID()]);
+            return $this->redirectToRoute('accueil_pro', ['id' => $user->getID()]);
         }
 
-        return $this->render('registration/modifProfessionnel.html.twig', ['registrationForm' => $form->createView()]);
+        return $this->render('professionnel/modifpro.html.twig', ['registrationForm' => $form->createView()]);
     }
 
 }

@@ -31,7 +31,7 @@ security:
                 authenticators:
                     - App\Security\ParticulierAuthenticator
             logout:
-                path: part_logout
+                path: deco_part
                 # where to redirect after logout
                 target: /
         professionnel_security:
@@ -42,7 +42,7 @@ security:
                 authenticators:
                     - App\Security\ProfessionnelAuthenticator
             logout:
-                path: pro_logout
+                path: deco_pro
                 # where to redirect after logout
                 target: /
 

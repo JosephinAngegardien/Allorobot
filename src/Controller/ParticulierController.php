@@ -10,17 +10,17 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class ParticulierController extends AbstractController
 {
     /**
-     * @Route("/particulier/login", name="app_login")
+     * @Route("/particulier/login", name="connexion_part")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('particulier/login.html.twig', ['last_username' => $lastUsername, 'error' => $error,]);
+        return $this->render('particulier/loginpart.html.twig', ['last_username' => $lastUsername, 'error' => $error,]);
     }
 
     /**
-     * @Route("/particulier/logout", name="part_logout")
+     * @Route("/particulier/logout", name="deco_part")
      * 
      * @return void
      */

@@ -20,7 +20,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/logout", name="admin_logout")
+     * @Route("/admin/logout", name="deco_admin")
      * 
      * @return void
      */

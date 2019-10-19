@@ -1,8 +1,28 @@
 {% extends 'base.html.twig' %}
 
 
-
-
+{% block navigation %}
+    <nav>
+        {% if not app.user %}
+            <div class="boite2">
+                <a class="a1" href=" {{ path ("page_accueil") }} " >Retour à l'accueil</a>
+            </div>
+            <div class="boite" id="connexion">
+                <a class="a1" href=" {{ path ("connexion_part") }} " >Connexion</a>
+            </div>
+            <div class="boite" id="creercompte">
+                <a class="a1" href=" {{ path ("inscription_part") }} " >Créer un compte</a>
+            </div>
+        {% else %}
+            <div class="boite">
+                <a class="a1" href=" {{ path ("modif_part") }} " >Modifier profil</a>
+            </div>
+            <div class="boite" id="deconnexion">
+                <a class="a1" href=" {{ path ("deco_part") }} " >Déconnexion</a>
+            </div>
+        {% endif %}
+    </nav>
+{% endblock %}
 
 {% block content %}
 

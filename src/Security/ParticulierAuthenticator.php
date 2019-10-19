@@ -39,7 +39,7 @@ class ParticulierAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
+        return 'connexion_part' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -69,7 +69,7 @@ class ParticulierAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException("L'adresse de messagerie n'a pas été trouvée.");
         }
 
         return $user;
@@ -88,11 +88,11 @@ class ParticulierAuthenticator extends AbstractFormLoginAuthenticator
 
         // For example : return new RedirectResponse($this->router->generate('some_route'));
         //throw new \Exception('app_login '.__FILE__);
-        return new RedirectResponse($this->router->generate('app_login'));
+        return new RedirectResponse($this->router->generate('accueil_part'));
     }
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('app_login');
+        return $this->router->generate('accueil_part');
     }
 }
