@@ -2,7 +2,7 @@
 
 namespace App\Security;
 
-use App\Entity\Professionnel;
+use App\Entity\Administrateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
+class AdminAuthenticator extends AbstractFormLoginAuthenticator
 {
     use TargetPathTrait;
 
@@ -38,20 +38,20 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
-        return 'connexion_pro' === $request->attributes->get('_route')
+        return 'connexion_admin' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'siret' => $request->request->get('siret'),
+            'username' => $request->request->get('username'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['siret']
+            $credentials['username']
         );
 
         return $credentials;
@@ -64,11 +64,11 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(Professionnel::class)->findOneBy(['siret' => $credentials['siret']]);
+        $user = $this->entityManager->getRepository(Administrateur::class)->findOneBy(['username' => $credentials['username']]);
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException("Le numéro siret n'a pas été trouvé.");
+            throw new CustomUserMessageAuthenticationException("Le nom n'a pas été trouvé.");
         }
 
         return $user;
@@ -86,12 +86,12 @@ class ProfessionnelAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         // For example : return new RedirectResponse($this->router->generate('some_route'));
-        //throw new \Exception('TODO ...'.__FILE__);
-        return new RedirectResponse($this->router->generate('accueil_pro'));
+        //throw new \Exception('app_login '.__FILE__);
+        return new RedirectResponse($this->router->generate('accueil_admin'));
     }
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('connexion_pro');
+        return $this->router->generate('connexion_admin');
     }
 }

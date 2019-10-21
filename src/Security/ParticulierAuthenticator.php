@@ -4,7 +4,6 @@ namespace App\Security;
 
 use App\Entity\Particulier;
 use Doctrine\ORM\EntityManagerInterface;
-
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -93,6 +92,6 @@ class ParticulierAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('accueil_part');
+        return $this->router->generate('connexion_part');
     }
 }

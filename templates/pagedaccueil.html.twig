@@ -9,6 +9,9 @@
         <div class="boite">
             <a class="a1" href=" {{ path ("accueil_pro") }} " >Pour les entreprises</a>
         </div>
+        <div class="boite2">
+            <a class="a1" href=" {{ path ("connexion_admin") }} " >Administration</a>
+        </div>
     </nav>
 {% endblock %}
 
@@ -16,11 +19,15 @@
 
     <footer id="footer1">
         {% if app.user %}
-            {% if is_granted ("ROLE_PARTICULIER") %}
-                <p>Vous êtes connecté en tant que {{ app.user.prenom }} {{ app.user.nom }} </p>
-            {% endif %}
-            {% if is_granted ("ROLE_PROFESSIONNEL") %}
-                <p>Raison sociale : {{ app.user.nom }} </p>
+            {% if is_granted ("ROLE_ADMIN") %}
+            <p>Vous êtes connecté en tant qu'administrateur</p>
+            {% else %}
+                {% if is_granted ("ROLE_PARTICULIER") %}
+                    <p>Vous êtes connecté en tant que {{ app.user.prenom }} {{ app.user.nom }} </p>
+                {% endif %}
+                {% if is_granted ("ROLE_PROFESSIONNEL") %}
+                    <p>Raison sociale : {{ app.user.nom }} </p>
+                {% endif %}
             {% endif %}
         {% endif %}
     </footer>

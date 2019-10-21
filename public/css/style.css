@@ -29,7 +29,7 @@
         font-family: 'Press Start 2P', cursive;
         /* font-family: 'Graduate', cursive; */
         /* font-family: 'Rye', cursive; */
-        font-size: 3em;
+        font-size: 2.5em;
     }
     nav{
         display: flex;
@@ -49,30 +49,18 @@
     .boite2{
         border-radius: 0.5em;
         padding: 1em;
-        background-image: linear-gradient(rgb(34, 5, 51), rgb(85, 58, 121));
-        opacity: 0.7;
+        background-image: linear-gradient(black, dimgrey);
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
-    /* #creercompte{
-        left: 4vw;
-        top: 3vh;
-    }
-    #administrateur{
-        width: 12em;
-    }
-    #connexion, #deconnexion{
-        left: 4vw;
-        top: 8vh;
-    } */
     .a1{
         text-decoration: none;
         color:burlywood;
     }
     .a2{
         text-decoration: none;
-        color: floralwhite;
+        color: yellow;
     }
     .formulaire{
         height: 15em;
@@ -155,21 +143,12 @@
         background-attachment: fixed;
     }
     #sentence{
-        font-family: 'Alex Brush', cursive;
-        font-size: 3em;
+        /* font-family: 'Alex Brush', cursive; */
+        font-family: 'Press Start 2P', cursive;
         color: rgb(12, 85, 42);
         text-align: center;
         display: table-cell;
         vertical-align: middle;
-    }
-    .zone3{
-        height: 100vh;
-        width: 100%;
-        background-image: url("/images/apocalypse.jpg");
-        background-size: cover;
-        background-position: center;
-        display: table;
-        background-attachment: fixed;
     }
     #nomdusite2{
         color: rgb(190, 16, 16);
@@ -186,15 +165,6 @@
         left: 30%;
         bottom: 0.5em;
         font-family: 'Berkshire Swash', cursive;
-    }
-    .zone4{
-        height: 100vh;
-        width: 100%;
-        background-image: url("/images/antre_sorcier1.jpg");
-        background-size: cover;
-        background-position: center;
-        display: table;
-        background-attachment: fixed;
     }
     #sentence2{
         font-family: 'Berkshire Swash', cursive;

@@ -4,6 +4,9 @@ security:
             algorithm: auto
         App\Entity\Professionnel:
             algorithm: auto
+        App\Entity\Administrateur:
+            algorithm: auto
+
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
@@ -17,6 +20,10 @@ security:
             entity:
                 class: App\Entity\Professionnel
                 property: siret
+        administrateur_provider:
+            entity:
+                class: App\Entity\Administrateur
+                property: username
 
     firewalls:
         dev:
@@ -45,6 +52,17 @@ security:
                 path: deco_pro
                 # where to redirect after logout
                 target: /
+        admin_security:
+            pattern: ^/admin
+            anonymous: true
+            provider: administrateur_provider
+            guard:
+                authenticators:
+                    - App\Security\AdminAuthenticator
+            logout:
+                path: deco_admin
+                # where to redirect after logout
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -56,6 +74,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 

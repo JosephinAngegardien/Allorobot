@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement admin{% endblock %}
+
+{% block body %}
+
+    <section class="formulaire">
+        <div class="titreform"><h1>Création d'un administrateur</h1></div>
+
+        <div class="saisieform">
+        {{ form_start(registrationForm) }}
+
+            {{ form_row(registrationForm.username, {"label": "Nom "}) }}
+            {{ form_row(registrationForm.password.first, {"label": "Mot de passe (au moins huit caractères) "}) }}
+            {{ form_row(registrationForm.password.second, {"label": "Confirmation du mot de passe "}) }}
+
+            <button class="valider">Enregistrement</button>
+
+        {{ form_end(registrationForm) }}
+        </div>
+    </section>
+
+{% endblock %}
+
+
+

@@ -4,7 +4,7 @@
 {% block navigation %}
     <nav>
         {% if not app.user %}
-            <div class="boite2">
+            <div class="boite">
                 <a class="a1" href=" {{ path ("page_accueil") }} " >Retour à l'accueil</a>
             </div>
             <div class="boite" id="connexion">
@@ -29,10 +29,9 @@
 
     <footer id="footer1">
         {% if app.user %}
-            {% if is_granted ("ROLE_PARTICULIER") %}
-                <p>Vous êtes connecté en tant que {{ app.user.prenom }} {{ app.user.nom }} </p>
-            {% endif %}
-            {% if is_granted ("ROLE_PROFESSIONNEL") %}
+            {% if is_granted ("ROLE_ADMIN") %}
+            <p>Vous êtes connecté en tant qu'administrateur</p>
+            {% elseif is_granted ("ROLE_PROFESSIONNEL") %}
                 <p>Raison sociale : {{ app.user.nom }} </p>
             {% endif %}
         {% endif %}

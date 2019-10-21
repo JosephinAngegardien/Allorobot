@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ asset("css/style3.css") }}">
         <link rel="stylesheet" href="{{ asset("css/style4.css") }}">
         <link rel="stylesheet" href="{{ asset("css/style5.css") }}">
-        <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
+        {# <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet"> #}
         <link href="https://fonts.googleapis.com/css?family=Acme|Cinzel|Graduate|Press+Start+2P|Rye|Turret+Road&display=swap" rel="stylesheet">
 
         {% endblock %}
@@ -22,7 +22,7 @@
 
         <section class="zone1">
             
-                <header><h1 id="nomdusite">Location de robots</h1></header>
+                <header><h1 id="nomdusite">Allorobot, location de robots</h1></header>
 
                 {% block navigation %}
 
@@ -49,13 +49,6 @@
                     <div class="boite">
                         <a class="a1" href=" {{ path ("page_accueil") }} " >Retour à l'accueil</a>
                     </div>
-
-                    {# {% if is_granted ("ROLE_ADMIN") %}
-                        <div class="boite" id="administrateur">
-                            <a class="a2" href="{{ path ("app_admin") }}"><strong>L'antre de l'être</strong></a>
-                        </div>
-                    {% endif %} #}
-
                     {% if not app.user %}
                     <div class="boite" id="connexion">
                         <a class="a1" href=" {{ path ("connexion_part") }} " >Connexion particulier</a>
@@ -90,11 +83,11 @@
         </section>
 
         <section class="zone2">
-            <h1 id="sentence">Pourquoi remettre au lendemain ce qu'on peut faire le surlendemain ?</h1>
+            <h1 id="sentence">Chez Allorobot, nous avons le robot qu'il vous faut.</h1>
             {# <footer>
                 {% if app.user %}
                     {% for role in app.user.roles %}
-                    <li> {{ role }} </li>
+                    <li> Vous avez le rôle suivant:  {{ role }} </li>
                     {% endfor %}
                     {% if is_granted ("ROLE_ADMIN") %}
                         <p>Bonjour monsieur l'administrateur</p>
