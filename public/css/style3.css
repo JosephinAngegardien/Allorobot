@@ -1,9 +1,30 @@
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media(max-width: 575px){
 
     #bodybase{
         margin: 0;
         padding: 0;
+    }
+    .zone1{
+        height: 100vh;
+        width: 100%;
+        background-image: url("/images/montagne.jpg");
+        background-size: cover;
+        background-position: center;
+        display: table;
+        background-attachment: fixed;
+    }
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 7em;
+    }   
+    #nomdusite{
+        color: rgb(33, 7, 82);
+        /* font-family: 'AlexBrushRegular'; */
+        font-family: 'Alex Brush', cursive;
+        font-size: 3em;
     }
     .boite{
         height: 2em;
@@ -14,22 +35,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absolute;
+        margin: auto;
     }
-    
+    #connexion, #deconnexion{
+        margin-top: 2px;
+    }
     .a1{
         text-decoration: none;
         color: burlywood;
-    }
-    
-    .zone1{
-        height: 100vh;
-        width: 100%;
-        background-image: url("/images/montagne.jpg");
-        background-size: cover;
-        background-position: center;
-        display: table;
-        background-attachment: fixed;
     }
     .zone2{
         height: 100vh;
@@ -40,41 +53,17 @@
         display: table;
         background-attachment: fixed;
     }
-    #nomdusite{
-        color: rgb(13, 114, 55);
-        /* font-family: 'AlexBrushRegular'; */
-        font-family: 'Alex Brush', cursive;
-        font-size: 3em;
-    }
-    #letitre{
-        height: 5em;
-        width: 22em;
-        background-image: none;
-        top: 5vh;
-        left: 45%;
-    }
-    #connexion, #deconnexion{
-        left: 4vw;
-        top: 8vh;
-    }
-    #creercompte{
-        left: 4vw;
-        top: 3vh;
-    }
     #sentence{
         /* font-family: 'AlexBrushRegular'; */
         font-family: 'Alex Brush', cursive;
-        font-size: 3em;
+        font-size: 2em;
         color: rgb(12, 85, 42);
         text-align: center;
         display: table-cell;
         vertical-align: middle;
+        padding: 10px;
     }
- 
- }
 
-
-
-
+}
 
 

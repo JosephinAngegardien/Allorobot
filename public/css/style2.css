@@ -1,5 +1,5 @@
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 576px) and (max-width: 999px) {
 
     #bodybase{
         margin: 0;
@@ -44,7 +44,7 @@
         color: rgb(13, 114, 55);
         /* font-family: 'AlexBrushRegular'; */
         font-family: 'Alex Brush', cursive;
-        font-size: 3.5em;
+        font-size: 3em;
     }
     #letitre{
         height: 5em;
@@ -70,8 +70,9 @@
         display: table-cell;
         vertical-align: middle;
     }
-
+ 
  }
+
 
 
 

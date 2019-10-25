@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -18,12 +19,12 @@ class RegispartFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('prenom')
-            ->add('nom')
-            ->add('adresse')
-            ->add('ville')
-            ->add('codepostal')
+            ->add('email', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('nom', TextType::class)
+            ->add('adresse', TextType::class)
+            ->add('ville', TextType::class)
+            ->add('codepostal', TextType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Il faut écrire deux fois le même mot de passe.',

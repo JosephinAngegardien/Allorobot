@@ -1,0 +1,25 @@
+{% extends 'baseadmin.html.twig' %}
+
+
+{% block body %}
+    <div class="boite4">
+        <div id="titrecaracs">
+            <h1>Liste des caractéristiques techniques existantes</h1>
+        </div>
+        {% for carac in caracs %}
+            <div id="listcaracs">
+                <div id="lc1"><strong>{{  carac.nom  }}</strong></div>
+                <div id="lc2">{{  carac.description  }}</div>
+                <div id="lc3"><a class="a5" href="{{ path ("modif_carac",{'id':carac.id}) }}">Modifier</a></div>
+                <div id="lc3"><a class="a4" href="{{ path ("suppr_carac",{'id':carac.id}) }}" onclick="return confirm('Supprimer ?')">Supprimer</a></div>
+            </div>
+        {% endfor %}
+        <div id="ajoutcar">
+            <a class="a6" href="{{ path ("ajouter_carac") }}">Ajouter caractéristique</a>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

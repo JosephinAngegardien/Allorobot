@@ -1,0 +1,24 @@
+{% extends 'baseadmin.html.twig' %}
+
+
+{% block body %}
+    <div class="boite5">
+        {{ form_start(form) }}
+
+            <table>
+                <tr>
+                    <td>{{form_label(form.url, "Adresse de l'image : ", {"label_attr":{"class":"label"}}) }}</td>
+                    <td>{{form_widget(form.url, {"attr": {"class": "champtexte"}}) }}</td>
+                </tr>
+            </table>
+
+            <div class="boite6">
+            <button type="submit" class="valider3">Valider</button>
+            </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+

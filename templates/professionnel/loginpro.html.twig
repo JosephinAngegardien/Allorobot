@@ -8,53 +8,42 @@
 {% endblock %}
 
 <section class="formulaire">
-<form method="post">
+    <form method="post">
 
-    {# {% if app.user %}
-        <div class="">Vous êtes connecté en tant que {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">Déconnexion</a></div>
-    {% endif %} #}
+        {% if error %}
+            <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if error %}
-        <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+            <table>
+                <tr>
+                    <td><label for="inputSiret" class="">N° siret </label></td>
+                    <td><input type="text" value="{{ last_username }}" name="siret" class="champtrente" placeholder="N° siret" required autofocus></td>
+                </tr>
+                <tr class="idconnex">
+                    <td><label for="inputPassword" class="">Mot de passe </label></td>
+                    <td><input type="password" name="password"  class="champtrente" placeholder="Mot de passe" required></td>
+                </tr>
+            </table>
 
-    {# <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required> #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        
 
-    <div class="saisieform">
-        <div class="idconnex">
-            <label for="inputSiret" class="">N° siret </label>
-            <input type="text" value="{{ last_username }}" name="siret" class="" placeholder="N° siret" required autofocus>
-        </div>
-        <div class="idconnex">
-            <label for="inputPassword" class="">Mot de passe </label>
-            <input type="password" name="password"  class="" placeholder="Mot de passe" required>
-        </div>
-    
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}">
-    
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+            <div>
+                <button type="submit" class="valider2">Connexion</button>
+            </div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-        <div>
-            <button type="submit" class="valider2">Connexion</button>
-        </div>
-    </div>
-
-</form>
+    </form>
 </section>
 
 {% endblock %}

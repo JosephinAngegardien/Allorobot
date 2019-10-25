@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block navigation %}
+    <nav>
+        {% if is_granted ("ROLE_ADMIN") %}
+            <div class="boite2" id="deconnexion">
+                <a class="a3" href="{{ path ("deco_admin") }}">Déconnexion admin</a>
+            </div>
+            <div class="boite2">
+                <a class="a3" href="{{ path ("liste_robots") }}">Voir modèles</a>
+            </div>
+            <div class="boite2">
+                <a class="a3" href="{{ path ("liste_caracs") }}">Voir caractéristiques</a>
+            </div>
+            <div class="boite2">
+                <a class="a3" href="{{ path ("liste_images") }}">Voir images</a>
+            </div>
+        {% endif %}
+    </nav>
+{% endblock %}
+
+
+

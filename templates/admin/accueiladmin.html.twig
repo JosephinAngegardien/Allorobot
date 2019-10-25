@@ -1,18 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 
-{% block navigation %}
-    <nav>
-        {% if is_granted ("ROLE_ADMIN") %}
-            <div class="boite" id="deconnexion">
-                <a class="a1" href=" {{ path ("deco_admin") }} " >Déconnexion admin</a>
-            </div>
-        {% endif %}
-    </nav>
-{% endblock %}
-
-{% block body %}{% endblock %}
-{% block content %}{% endblock %}
                     
 {% block javascripts %}
     {# <script src="/js/mvtitre.js" ></script>

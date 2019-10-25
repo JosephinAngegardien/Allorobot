@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau robot{% endblock %}
+
+{# {% form_theme form 'ad/_collection.html.twig' %} #}
+
+{% block body %}
+
+    <div class="">
+        <h1 class="">Enregistrement d'un modèle de robot</h1>
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col">
+                <div class="">
+                    <h2>Informations générales</h2>
+                    <hr>
+                    {{ form_row(form.modele) }}
+                    {{ form_row(form.locomotion) }}
+                    {{ form_row(form.tarif) }}
+                </div>
+                <div class="">
+                    <h2>Détails</h2>
+                    <hr>
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.caracs) }}
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert alert-light">
+                    <h2>Images</h2>
+                    <hr>
+                    {{ form_row(form.images) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <h2 class="">Sauvegarder</h2>
+            <p>Nous allons sauvegarder le modèle.</p>
+            <button type="submit" class="">
+                <i class=""></i>
+                Enregistrer le modèle
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+
+

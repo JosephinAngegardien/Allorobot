@@ -38,23 +38,28 @@ class Robots
     private $description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $image;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="robots", orphanRemoval=true)
      */
     private $avis;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $locomotion;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\CaracTech", inversedBy="robots")
      */
     private $caracs;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="robots")
+     */
+    private $images;
+
     public function __construct()
     {
-        // $this->images = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->lesavis = new ArrayCollection();
         $this->caracs = new ArrayCollection();
     }
@@ -178,6 +183,37 @@ class Robots
     {
         if ($this->caracs->contains($carac)) {
             $this->caracs->removeElement($carac);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setRobots($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getRobots() === $this) {
+                $image->setRobots(null);
+            }
         }
 
         return $this;

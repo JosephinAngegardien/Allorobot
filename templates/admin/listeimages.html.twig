@@ -1,0 +1,22 @@
+{% extends 'baseadmin.html.twig' %}
+
+
+
+{% block body %}
+    <div class="boite3">
+        <div id="titrimages">
+            <h1 class="clair">Ajout et suppression des images</h1>
+        </div>
+        <div>
+            {% for image in images %}
+            <a href="{{ path ("suppr_image",{'id':image.id}) }}" onclick="return confirm('Supprimer ?')"><img class="choiximgmod" src="{{ image.url }}" alt="Et cette image alors ?"></a>
+            {% endfor %}
+            <a href="{{ path ("ajouter_image") }}"><img class="choiximgmod" src="{{ asset ('images/appphoto.jpg') }}"></a>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
