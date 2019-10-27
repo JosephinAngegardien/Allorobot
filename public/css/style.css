@@ -8,7 +8,18 @@
     .zone1{
         height: 100vh;
         width: 100%;
-        background-image: url("/images/montagne.jpg");
+        /* background-image: url("/images/montagne.jpg"); */
+        background-image: url("/images/bizarroide.jpg");
+        background-size: cover;
+        background-position: center;
+        display: table;
+        background-attachment: fixed;
+    }
+    .zone2{
+        height: 100vh;
+        width: 100%;
+        /* background-image: url("/images/plage2.jpg"); */
+        background-image: url("/images/solmartien.jpg");
         background-size: cover;
         background-position: center;
         display: table;
@@ -20,16 +31,16 @@
         justify-content: center;
         height: 9em;
     }
-    #nomdusite{
-        color: rgb(16, 145, 70);
-        /* font-family: 'Alex Brush', cursive; */
-        /* font-family: 'Acme', sans-serif; */
-        /* font-family: 'Cinzel', serif; */
-        /* font-family: 'Turret Road', cursive; */
-        font-family: 'Press Start 2P', cursive;
-        /* font-family: 'Graduate', cursive; */
-        /* font-family: 'Rye', cursive; */
-        font-size: 2.5em;
+    #footer1{
+        height: 4em;
+        color: floralwhite;
+        text-align: center;
+        font-size: 1.4em;
+        position: absolute;
+        right: 30%;
+        left: 30%;
+        bottom: 1em;
+        text-decoration: overline;
     }
     nav{
         display: flex;
@@ -54,17 +65,49 @@
         align-items: center;
         justify-content: space-evenly;
     }
-    .a1{
-        text-decoration: none;
-        color:burlywood;
+    .boite3{
+        border-radius: 1em;
+        padding: 0.5em;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        background-color: black;
     }
-    .a2{
-        text-decoration: none;
-        color: yellow;
+    .boite4{
+        border-radius: 1em;
+        padding: 0.5em;
+        width: 96%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        background-color: rgb(182, 152, 122);
     }
-    .a3{
-        text-decoration: none;
-        color: rgb(61, 79, 180);
+    .boite5{
+        border-radius: 1em;
+        padding: 0.5em;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4em;
+        background-image: linear-gradient(rgb(77, 82, 6), rgb(221, 223, 191));
+        /* border: 1px solid black; */
+    }
+    .boite6{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        padding: 1em;
+        border-radius: 0.5em;
+        display: flex;
+        align-items: center;
+        /* border: 1px solid black; */
+    }
+    .boite7{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
     .formulaire{
         width: 30em;
@@ -84,12 +127,36 @@
         font-size: 1em;
         /* border: 1px solid black; */
     }
-    .champtrente{
-        height: 2em;
-        width: 30em;
+    .choiximgmod{
+        width: 11em;
+        height: 11em;
+        object-fit: cover;
+        padding: 0.6em;
+    }
+    #ajoutcar{
         border-radius: 0.5em;
-        margin: 1em;
-        background-color: ghostwhite;
+        padding: 1em;
+        width: 20em;
+        font-size: 1.5em;
+        text-align: center;
+        background-color: rgb(141, 93, 44);
+    }
+    #creerrobot{
+        border-radius: 0.5em;
+        padding: 1em;
+        width: 20em;
+        font-size: 1.5em;
+        text-align: center;
+        background-color: rgb(141, 93, 44);
+    }
+    #titrimages{
+        margin-left: 1em;
+    }
+    #titrecaracs{
+        margin-left: 4em;
+    }
+    #listcaracs{
+        display: flex;
     }
     .valider{
         padding: 10px;
@@ -111,102 +178,16 @@
         color: burlywood;
         background-color: rgb(13, 114, 55);
     }
-    .accueil{
-        width: 100%;
-        height: 70vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2em;
-        color: crimson;
-    }
-    #footer1{
-        height: 4em;
-        color: floralwhite;
-        text-align: center;
-        font-size: 1.4em;
-        position: absolute;
-        right: 30%;
-        left: 30%;
-        bottom: 1em;
-        text-decoration: overline;
-    }
-    .zone2{
-        height: 100vh;
-        width: 100%;
-        background-image: url("/images/plage2.jpg");
-        background-size: cover;
-        background-position: center;
-        display: table;
-        background-attachment: fixed;
-    }
-    #sentence{
-        /* font-family: 'Alex Brush', cursive; */
-        font-family: 'Press Start 2P', cursive;
-        color: rgb(12, 85, 42);
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-    }
-    #nomdusite2{
-        color: rgb(190, 16, 16);
-        font-family: 'Berkshire Swash', cursive;
-        font-size: 4em;
-    }
-    #footer2{
-        height: 4em;
-        color: rgb(235, 105, 19);
-        text-align: center;
-        font-size: 1.4em;
-        position: absolute;
-        right: 30%;
-        left: 30%;
-        bottom: 0.5em;
-        font-family: 'Berkshire Swash', cursive;
-    }
-    #sentence2{
-        font-family: 'Berkshire Swash', cursive;
-        font-size: 5em;
-        color: rgb(50, 8, 78);
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-    }
-    .boite3{
-        border-radius: 1em;
-        padding: 0.5em;
-        width: 96%;
+    .valider3{
+        height: 3.5em;
+        width: 7em;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 2em;
-        background-color: black;
-    }
-    #titrimages{
-        margin-left: 1em;
-    }
-    .clair{
-        color: darksalmon;
-    }
-    .choiximgmod{
-        width: 11em;
-        height: 11em;
-        object-fit: cover;
-        padding: 0.6em;
-    }
-    .boite4{
-        border-radius: 1em;
-        padding: 0.5em;
-        width: 96%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 2em;
-        background-color: rgb(182, 152, 122);
-    }
-    #titrecaracs{
-        margin-left: 4em;
-    }
-    #listcaracs{
-        display: flex;
+        border-radius: 0.5em;
+        text-align: center;
+        color: burlywood;
+        background-color: rgb(13, 114, 55);
+        font-size: 1.2em;
     }
     #lc1{
         padding: 1em;
@@ -223,61 +204,16 @@
         display: flex;
         width: 6%;
     }
-    .a4{
-        text-decoration: none;
-        color: rgb(119, 24, 29);
-    }
-    .a5{
-        text-decoration: none;
-        color: rgb(25, 97, 126);
-    }
-    #ajoutcar{
-        border-radius: 0.5em;
-        padding: 1em;
-        width: 20em;
-        font-size: 1.5em;
-        text-align: center;
-        background-color: rgb(141, 93, 44);
-    }
-    .a6{
-        text-decoration: none;
-        color: rgb(51, 44, 7);
-    }
-    .boite5{
-        border-radius: 1em;
-        padding: 0.5em;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 4em;
-        background-image: linear-gradient(rgb(77, 82, 6), rgb(221, 223, 191));
-        /* border: 1px solid black; */
-    }
-    .valider3{
-        height: 3.5em;
-        width: 7em;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 0.5em;
-        text-align: center;
-        color: burlywood;
-        background-color: rgb(13, 114, 55);
-        font-size: 1.2em;
-    }
-    .boite6{
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 1em;
-        padding: 1em;
-        border-radius: 0.5em;
-        display: flex;
-        align-items: center;
-        /* border: 1px solid black; */
-    }
     .champtitre{
         height: 2em;
         width: 20em;
+        border-radius: 0.5em;
+        margin: 1em;
+        background-color: ghostwhite;
+    }
+    .champtrente{
+        height: 2em;
+        width: 30em;
         border-radius: 0.5em;
         margin: 1em;
         background-color: ghostwhite;
@@ -293,9 +229,55 @@
         margin: 1em;
         font-size: 1.2em;
     }
+    #nomdusite{
+        color: darkslateblue;
+        /* font-family: 'Alex Brush', cursive; */
+        /* font-family: 'Acme', sans-serif; */
+        /* font-family: 'Cinzel', serif; */
+        /* font-family: 'Turret Road', cursive; */
+        font-family: 'Press Start 2P', cursive;
+        /* font-family: 'Graduate', cursive; */
+        /* font-family: 'Rye', cursive; */
+        font-size: 2.5em;
+    }
+    #sentence{
+        /* font-family: 'Alex Brush', cursive; */
+        /* font-family: 'Press Start 2P', cursive; */
+        font-size: 2.5em;
+        color: darkslateblue;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .clair{
+        color: darksalmon;
+    }
+    .a1{
+        text-decoration: none;
+        color:burlywood;
+    }
+    .a2{
+        text-decoration: none;
+        color: yellow;
+    }
+    .a3{
+        text-decoration: none;
+        color: rgb(61, 79, 180);
+    }
+    .a4{
+        text-decoration: none;
+        color: rgb(119, 24, 29);
+    }
+    .a5{
+        text-decoration: none;
+        color: rgb(25, 97, 126);
+    }
+    .a6{
+        text-decoration: none;
+        color: rgb(51, 44, 7);
+    }
 
 
- 
  }
 
 

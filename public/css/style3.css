@@ -14,18 +14,21 @@
         display: table;
         background-attachment: fixed;
     }
+    .zone2{
+        height: 100vh;
+        width: 100%;
+        background-image: url("/images/plage2.jpg");
+        background-size: cover;
+        background-position: center;
+        display: table;
+        background-attachment: fixed;
+    }
     header{
         display: flex;
         align-items: center;
         justify-content: center;
         height: 7em;
     }   
-    #nomdusite{
-        color: rgb(33, 7, 82);
-        /* font-family: 'AlexBrushRegular'; */
-        font-family: 'Alex Brush', cursive;
-        font-size: 3em;
-    }
     .boite{
         height: 2em;
         width: 9em;
@@ -40,18 +43,11 @@
     #connexion, #deconnexion{
         margin-top: 2px;
     }
-    .a1{
-        text-decoration: none;
-        color: burlywood;
-    }
-    .zone2{
-        height: 100vh;
-        width: 100%;
-        background-image: url("/images/plage2.jpg");
-        background-size: cover;
-        background-position: center;
-        display: table;
-        background-attachment: fixed;
+    #nomdusite{
+        color: rgb(33, 7, 82);
+        /* font-family: 'AlexBrushRegular'; */
+        font-family: 'Alex Brush', cursive;
+        font-size: 3em;
     }
     #sentence{
         /* font-family: 'AlexBrushRegular'; */
@@ -62,6 +58,10 @@
         display: table-cell;
         vertical-align: middle;
         padding: 10px;
+    }
+    .a1{
+        text-decoration: none;
+        color: burlywood;
     }
 
 }

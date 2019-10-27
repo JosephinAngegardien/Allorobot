@@ -218,5 +218,25 @@ class Robots
 
         return $this;
     }
+
+    /**
+     * Get the value of locomotion
+     */ 
+    public function getLocomotion()
+    {
+        return $this->locomotion;
+    }
+
+    /**
+     * Set the value of locomotion
+     *
+     * @return  self
+     */ 
+    public function setLocomotion($locomotion)
+    {
+        $this->locomotion = $locomotion;
+
+        return $this;
+    }
 }
 

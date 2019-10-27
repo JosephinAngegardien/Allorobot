@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CaracTech;
 use App\Entity\Robots;
 use App\Form\RobotsFormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,19 @@ class RobotsController extends AbstractController
     /**
      * @Route("/robots/liste", name="liste_robots")
      */
-    public function index()
+    public function listeRobots()
     {
         return $this->render('robots/liste.html.twig', [
+            'controller_name' => 'RobotsController',
+        ]);
+    }
+
+    /**
+     * @Route("/admin/listerobots", name="admin_liste_robots")
+     */
+    public function adminListeRobots()
+    {
+        return $this->render('admin/listerobots.html.twig', [
             'controller_name' => 'RobotsController',
         ]);
     }
@@ -27,17 +38,13 @@ class RobotsController extends AbstractController
      * @Route("/admin/creerrobot", name="creer_robot")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function create(Request $request, ObjectManager $manager): Response
+    public function createRobot(Request $request, ObjectManager $manager)
     {
         $robot = new Robots();
         $form = $this->createForm(RobotsFormType::class, $robot);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            foreach($robot->getImages() as $image) {
-                $image->setAd($robot);
-                $manager->persist($image);
-            }
 
             $manager->persist($robot);
             $manager->flush();

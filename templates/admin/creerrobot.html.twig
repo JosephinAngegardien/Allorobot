@@ -5,53 +5,101 @@
 {# {% form_theme form 'ad/_collection.html.twig' %} #}
 
 {% block body %}
-
-    <div class="">
-        <h1 class="">Enregistrement d'un modèle de robot</h1>
-
+    <div class="boite5">
+        <div class="boite7">
+            <h1>Enregistrement d'un modèle de robot</h1>
+        </div>
         {{ form_start(form) }}
 
-        <div class="row">
-            <div class="col">
-                <div class="">
-                    <h2>Informations générales</h2>
-                    <hr>
-                    {{ form_row(form.modele) }}
-                    {{ form_row(form.locomotion) }}
-                    {{ form_row(form.tarif) }}
-                </div>
-                <div class="">
-                    <h2>Détails</h2>
-                    <hr>
-                    {{ form_row(form.description) }}
-                    {{ form_row(form.caracs) }}
-                </div>
-            </div>
-            <div class="col">
-                <div class="alert alert-light">
-                    <h2>Images</h2>
-                    <hr>
-                    {{ form_row(form.images) }}
-                </div>
-            </div>
-        </div>
+            <table>
+                <tr>
+                    <td>{{ form_label(form.modele, "Nom du modèle ", {"label_attr":{"class":"label"}}) }}</td>
+                    <td>{{ form_widget(form.modele, {"attr": {"class": "champtitre"}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.locomotion, "Type de locomotion ", {"label_attr":{"class":"label"}}) }}</td>
+                    <td>{{ form_widget(form.locomotion) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.tarif, "Tarif journalier ", {"label_attr":{"class":"label"}}) }}</td>
+                    <td>{{ form_widget(form.tarif, {"attr": {"class": "champtitre"}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.description, "Description du modèle ", {"label_attr":{"class":"label"}}) }}</td>
+                    <td>{{ form_widget(form.description, {"attr": {"class": "champtexte"}}) }}</td>
+                </tr>
+            </table>
 
-        <div class="">
-            <h2 class="">Sauvegarder</h2>
-            <p>Nous allons sauvegarder le modèle.</p>
-            <button type="submit" class="">
-                <i class=""></i>
-                Enregistrer le modèle
-            </button>
-        </div>
+            <ul id="" data-prototype= "{{ form_row(form.caracs.vars.prototype)|e('html_attr') }}">
+            {% for carac in form.caracs %}
+                <li>
+                    {{ form_row(carac) }}
+                </li>
+            {% endfor %}
+            </ul>
+            {# {{form_row(form.submit) }} #}
+
+                {# <tr>
+                    <td>{{ form_row(form.images) }}</td>
+                </tr> #}
+
+            <div class="boite6">
+                <button type="submit" class="valider3">Valider</button>
+            </div>
 
         {{ form_end(form) }}
     </div>
-
 {% endblock %}
 
 {% block javascripts %}
+<script src="/js/attribuerCaracs.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 {% endblock %}
+
+{# {% block javascripts %}
+<script>
+
+var $collectionHolder;
+
+// setup an "add a tag" link
+var $addTagButton = $('<button type="button" class="add_tag_link">Add a carac</button>');
+var $newLinkLi = $('<li></li>').append($addTagButton);
+
+jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    $collectionHolder = $('ul.caracs');
+
+    // add the "add a tag" anchor and li to the tags ul
+    $collectionHolder.append($newLinkLi);
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+    $addTagButton.on('click', function(e) {
+        // add a new tag form (see next code block)
+        addTagForm($collectionHolder, $newLinkLi);
+    });
+});
+
+function addTagForm($collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
+    var prototype = $collectionHolder.data('prototype');
+
+    // get the new index
+    var index = $collectionHolder.data('index');
+// increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
+}
+
+</script>
+{% endblock %} #}
 
 
 
