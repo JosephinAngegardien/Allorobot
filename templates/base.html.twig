@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Acme|Cinzel|Graduate|Press+Start+2P|Rye|Turret+Road&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
-    <body id="bodybase">
+    <body>
 
         <section class="zone1">
             
@@ -78,19 +78,19 @@
             
         </section>
 
-        <section class="zone2">
+        {# <section class="zone2">
             <h1 id="sentence">Chez Allorobot, nous avons le robot qu'il vous faut.</h1>
-            {# <footer>
+            <footer id="footer2">
                 {% if app.user %}
                     {% for role in app.user.roles %}
-                    <li> Vous avez le rôle suivant:  {{ role }} </li>
+                    <p> Vous avez le rôle suivant:  {{ role }}.
                     {% endfor %}
                     {% if is_granted ("ROLE_ADMIN") %}
-                        <p>Bonjour monsieur l'administrateur</p>
+                        Bonjour monsieur l'administrateur.</p>
                     {% endif %}
                 {% endif %}
-            </footer> #}
-        </section>
+            </footer>
+        </section> #}
         
         {% block javascripts %}
             {# <script src="/js/mvtitre.js" ></script> #}

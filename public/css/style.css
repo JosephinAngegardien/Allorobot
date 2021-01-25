@@ -1,20 +1,25 @@
 
 @media (min-width: 1000px) {
 
-    #bodybase{
-        margin: 0;
-        padding: 0;
+    body{
+        /* background-image: url("/images/montagne.jpg"); */
+        background-image: url("/images/bizarroide.jpg");
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
-    .zone1{
+    /* .zone1{
         height: 100vh;
         width: 100%;
-        /* background-image: url("/images/montagne.jpg"); */
+        background-image: url("/images/montagne.jpg");
         background-image: url("/images/bizarroide.jpg");
         background-size: cover;
         background-position: center;
         display: table;
         background-attachment: fixed;
-    }
+    } */
     .zone2{
         height: 100vh;
         width: 100%;
@@ -275,6 +280,17 @@
     .a6{
         text-decoration: none;
         color: rgb(51, 44, 7);
+    }
+    #footer2{
+        height: 4em;
+        /* border: 1px solid black; */
+        border-radius: 0.5em;
+        background-color: darkcyan;
+        color: cornsilk;
+        text-align: center;
+        padding: 1%;
+        font-size: 1.2em;
+        display : table-footer-group;
     }
 
 
